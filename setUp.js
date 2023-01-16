@@ -5,7 +5,7 @@
 let xhr = new XMLHttpRequest();
 
 // 2. configure the request (details)
-xhr.open("GET", "/", true); // (method, url, async, user, password) method, url are required
+xhr.open("GET", "/http://www.example.com/test.json", true); // (method, url, async, user, password) method, url are required
 // only configures the request -- does not open connection with the server
 
 // 3. send your request to s server --> xhr.send([body])

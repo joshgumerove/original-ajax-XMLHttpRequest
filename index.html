@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let xhr = new XMLHttpRequest();
+
+      // 2. configure the request (details)
+      xhr.open("GET", "http://www.example.com/test.json", true); // (method, url, async, user, password) method, url are required
+      // only configures the request -- does not open connection with the server
+
+      //   4. load
+
+      xhr.onload = function () {
+        console.log("hello");
+      };
+
+      // 3. send your request to s server --> xhr.send([body])
+
+      xhr.send();
+    </script>
+  </body>
+</html>
