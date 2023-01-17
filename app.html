@@ -12,11 +12,16 @@
         let button = document.querySelector("button")
         button.addEventListener('click', () => {
             const xhr = new XMLHttpRequest()
-            console.log("unsent readyState: ", xhr.readyState)
+            // console.log(xhr)
+            xhr.onreadystatechange = () => {
+                console.log("the readyState has changed: ", xhr.readyState)
+                document.write(xhr.readyState)
+            }
+            // console.log("unsent readyState: ", xhr.readyState)
             xhr.open("GET", "./message.txt", true)
-            console.log("open readyState: ", xhr.readyState)
+            // console.log("open readyState: ", xhr.readyState)
             xhr.onload = () => {
-                console.log("done readyState: ", xhr.readyState)
+                // console.log("done readyState: ", xhr.readyState)
             }
             xhr.send()
         })
