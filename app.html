@@ -12,10 +12,13 @@
         let button = document.querySelector("button")
         button.addEventListener('click', () => {
             const xhr = new XMLHttpRequest()
-            // console.log(xhr)
+            console.log(xhr)
             xhr.onreadystatechange = () => {
-                console.log("the readyState has changed: ", xhr.readyState)
-                document.write(xhr.readyState)
+                // console.log("the readyState has changed: ", xhr.readyState)
+                // document.write(xhr.readyState)
+                if(xhr.readyState === 4){
+                    document.write("check this out: ", xhr.responseText)
+                }
             }
             // console.log("unsent readyState: ", xhr.readyState)
             xhr.open("GET", "./message.txt", true)
