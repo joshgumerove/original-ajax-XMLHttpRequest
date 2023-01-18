@@ -39,6 +39,10 @@
           // console.log("done readyState: ", xhr.readyState)
         };
 
+        xhr.onerror = () => {
+          console.log("there has been an error") // will only run if network level error
+        }
+
         xhr.send();
       });
     </script>
