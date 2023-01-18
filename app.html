@@ -7,6 +7,7 @@
     <title>AJAX</title>
   </head>
   <body>
+
     <button>Click Me</button>
 
     <script>
@@ -31,6 +32,11 @@
         xhr.open(method, url, true);
         xhr.responseType = 'text' // will get an error if have the wrong response
         // console.log("open readyState: ", xhr.readyState)
+        xhr.onprogress = (e) => {
+          // fired depending on the browser
+          console.log(e)
+          console.log(`Downloaded ${e.loaded} of ${e.total}`)
+        }
         xhr.onload = () => {
           console.log("hello");
           if (xhr.status === 200) {

@@ -10,6 +10,12 @@
     <script>
       let xhr = new XMLHttpRequest();
       xhr.open("GET", "./message.txt", true);
+      // example 1: download progress
+
+      xhr.onprogress = (e) => {
+        // fired depending on the browser
+        console.log("the event object: ", e)
+      }
       xhr.onload = function () {
         if (xhr.readyState === 4) {
           console.log(xhr.readyState);
@@ -17,6 +23,7 @@
         }
       };
       xhr.send();
+
     </script>
   </body>
 </html>
