@@ -13,25 +13,29 @@
       let button = document.querySelector("button");
       button.addEventListener("click", () => {
         const xhr = new XMLHttpRequest();
-        const url = './messsage.txt'
-        const method = "GET"
+        const url = "./message.txt";
+        const method = "GET";
         console.log(xhr);
-        xhr.onreadystatechange = () => {
-          // console.log("the readyState has changed: ", xhr.readyState)
-          // document.write(xhr.readyState)
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            document.write("check this out: ", xhr.responseText);
-          }
+        // xhr.onreadystatechange = () => {
+        // console.log("the readyState has changed: ", xhr.readyState)
+        // document.write(xhr.readyState)
+        // if (xhr.readyState === 4 && xhr.status === 200) {
+        //document.write("check this out: ", xhr.responseText);
+        //}
 
-          if(xhr.readyState === 4 && xhr.status === 404){
-            document.write("could not find file", xhr.responseText)
-          }
-        };
+        // if(xhr.readyState === 4 && xhr.status === 404){
+        // document.write("could not find file", xhr.responseText)
+        //}
+        //};
         // console.log("unsent readyState: ", xhr.readyState)
         xhr.open(method, url, true);
+        xhr.responseType = 'text' // will get an error if have the wrong response
         // console.log("open readyState: ", xhr.readyState)
         xhr.onload = () => {
-        console.log("hello")
+          console.log("hello");
+          if (xhr.status === 200) {
+            document.write("you are in luck ", xhr.responseText);
+          }
           // console.log("done readyState: ", xhr.readyState)
         };
 
