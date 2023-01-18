@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AJAX</title>
-</head>
-<body>
+  </head>
+  <body>
     <button>Click Me</button>
+
     <script>
-        let button = document.querySelector("button")
-        button.addEventListener('click', () => {
-            const xhr = new XMLHttpRequest()
-            console.log(xhr)
-            xhr.onreadystatechange = () => {
-                // console.log("the readyState has changed: ", xhr.readyState)
-                // document.write(xhr.readyState)
-                if(xhr.readyState === 4){
-                    document.write("check this out: ", xhr.responseText)
-                }
-            }
-            // console.log("unsent readyState: ", xhr.readyState)
-            xhr.open("GET", "./message.txt", true)
-            // console.log("open readyState: ", xhr.readyState)
-            xhr.onload = () => {
-                // console.log("done readyState: ", xhr.readyState)
-            }
-            xhr.send()
-        })
+      let button = document.querySelector("button");
+      button.addEventListener("click", () => {
+        const xhr = new XMLHttpRequest();
+        const url = './messsage.txt'
+        const method = "GET"
+        console.log(xhr);
+        xhr.onreadystatechange = () => {
+          // console.log("the readyState has changed: ", xhr.readyState)
+          // document.write(xhr.readyState)
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            document.write("check this out: ", xhr.responseText);
+          }
+
+          if(xhr.readyState === 4 && xhr.status === 404){
+            document.write("could not find file", xhr.responseText)
+          }
+        };
+        // console.log("unsent readyState: ", xhr.readyState)
+        xhr.open(method, url, true);
+        // console.log("open readyState: ", xhr.readyState)
+        xhr.onload = () => {
+        console.log("hello")
+          // console.log("done readyState: ", xhr.readyState)
+        };
+
+        xhr.send();
+      });
     </script>
-</body>
+  </body>
 </html>
