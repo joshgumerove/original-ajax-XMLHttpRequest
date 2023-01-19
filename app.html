@@ -15,33 +15,21 @@
         const xhr = new XMLHttpRequest();
         const url = "./message.txt";
         const method = "GET";
-        console.log(xhr);
-        // xhr.onreadystatechange = () => {
-        // console.log("the readyState has changed: ", xhr.readyState)
-        // document.write(xhr.readyState)
-        // if (xhr.readyState === 4 && xhr.status === 200) {
-        //document.write("check this out: ", xhr.responseText);
-        //}
 
-        // if(xhr.readyState === 4 && xhr.status === 404){
-        // document.write("could not find file", xhr.responseText)
-        //}
-        //};
-        // console.log("unsent readyState: ", xhr.readyState)
         xhr.open(method, url, true);
         xhr.responseType = "text"; // will get an error if have the wrong response
-        // console.log("open readyState: ", xhr.readyState)
+
         xhr.onprogress = (e) => {
           // fired depending on the browser
           console.log(e);
           console.log(`Downloaded ${e.loaded} of ${e.total}`);
         };
+
         xhr.onload = () => {
           console.log("hello");
           if (xhr.status === 200) {
             document.write("you are in luck ", xhr.responseText);
           }
-          // console.log("done readyState: ", xhr.readyState)
         };
 
         xhr.onerror = () => {
@@ -53,3 +41,5 @@
     </script>
   </body>
 </html>
+
+<!-- note: currently no way for fetch to track upload progess -->

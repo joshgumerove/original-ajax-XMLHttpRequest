@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Uploading</title>
+    </head>
+    <body>
+        <h1>Uploading to a Website</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta,
+            optio sunt eaque dicta in eius iusto molestiae cumque veniam, eos
+            delectus harum totam fuga? Natus sit aspernatur eligendi vero
+            corporis provident dolores temporibus veritatis magnam nostrum eum
+            nobis excepturi quas similique cumque ipsam reiciendis cupiditate,
+            enim hic praesentium optio. Quaerat?</p>
+        <input type="file">
+        <script>
+            const fileUpload = document.querySelector("input")
+            fileUpload.addEventListener("change", upload)
+
+            // define upload function: which will execute everytime file is selected
+
+            function upload(){
+            // use the fileAPI (given to us by the browser) to access the file selected by the user
+            const fileSelected = this.files[0]
+            console.log(fileSelected)
+            const xhr = new XMLHttpRequest()
+            xhr.upload.onprogress = (e) => {
+                console.log("event: ", e)
+            }
+
+            // step 3: configure AJAX Object
+            xhr.onloadend = (e) =>{
+                if(xhr.status === 200){
+                    document.write("Successful Upload")
+                }
+                else {
+                    console.log("error: ", xhr.status)
+                }
+            }
+            xhr.open("POST", "fakeURL", true)
+            xhr.send(fileSelected) // note the 405 status code
+            
+            }
+        </script>
+    </body>
+</html>
